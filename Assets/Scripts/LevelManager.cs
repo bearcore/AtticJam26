@@ -6,7 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     private GameManager game;
 
-    private void Start()
+    private void Awake()
     {
         // Ensure the game runs at normal time scale
         Time.timeScale = 1f;

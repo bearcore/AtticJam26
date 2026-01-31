@@ -2,6 +2,7 @@ using Cinemachine;
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     public GameObject WakeUpScene;
     public PlayableDirector WakeUpPlay;
     public PlayerController PlayerController;
+
+    public UnityEvent OnDidFirstClick = new UnityEvent();
 
     public CinemachineVirtualCamera VcamWakeUp;
     public CinemachineVirtualCamera VcamGameplay1;
@@ -60,6 +63,7 @@ public class GameManager : MonoBehaviour
             WakeUpScene.SetActive(true);
             StartUI.SetActive(false);
             WaitingForStartClick = false;
+            OnDidFirstClick.Invoke();
         }
 
         if(WaitingForRestartClick && Mouse.current.leftButton.wasPressedThisFrame)

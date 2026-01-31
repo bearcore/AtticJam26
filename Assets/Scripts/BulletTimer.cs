@@ -12,6 +12,7 @@ public class BulletTimer : MonoBehaviour
     public AudioSource Muzzle;
     public AudioSource Whizz;
     public AudioSource Impact;
+    public GameObject ParticleEffect;
 
     public List<AudioClip> MuzzleSounds;
     public List<AudioClip> WhizzSounds;
@@ -57,6 +58,7 @@ public class BulletTimer : MonoBehaviour
             _curDelay = Delay;
             Destroy(shot, 0.1f);
             EnableAfterFirstShot.SetActive(true);
+            ParticleEffect.SetActive(true);
             FireWhiz();
             HandleSound();
             _playedShot = false;
