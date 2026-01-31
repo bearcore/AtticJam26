@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!isMoving)
         {
-            Debug.Log("IsMoving" + isMoving);
+            //Debug.Log("IsMoving" + isMoving);
             return;
         }
            
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
         {
             agent.destination = hit.point;
             isMoving = true;
-            Debug.Log("Set IsMoving" + isMoving);
+            //Debug.Log("Set IsMoving" + isMoving);
 
             if (clickEffect != null)
             {
@@ -99,7 +99,8 @@ public class PlayerController : MonoBehaviour
         {
             ReachTarget();
             isMoving = false;
-            Debug.Log("Set IsMoving" + isMoving);
+            //Debug.Log("Set IsMoving" + isMoving);
+
             return; // Do not rotate if the agent is close to the destination
         }
 
