@@ -11,7 +11,8 @@ public class DollyTrackMovement : MonoBehaviour
 
     public LerpMovement lerpMovement;
 
-    //[SerializeField] CinemachineVirtualCamera vcam;
+    [SerializeField] CinemachineVirtualCamera vcam1;
+    [SerializeField] CinemachineVirtualCamera vcam2;
     //public Rigidbody cameraRB;
     public Transform cameraTF;
 
@@ -55,5 +56,10 @@ public class DollyTrackMovement : MonoBehaviour
         //dolly.m_PathPosition = newPosition;
 
         //Debug.Log("New Position: " + newPosition);
+    }
+
+    public void SwitchCamera()
+    {
+        GameManager.Instance.PromoteCamera(vcam2);
     }
 }

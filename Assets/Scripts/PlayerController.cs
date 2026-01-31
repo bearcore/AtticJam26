@@ -56,6 +56,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void ClickToMove()
     {
+        if(GameManager.Instance.IsPlayerInvulnerable) return;
+
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(
             Mouse.current.position.ReadValue()), out hit, 100f, groundLayer))
