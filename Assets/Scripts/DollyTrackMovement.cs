@@ -37,12 +37,12 @@ public class DollyTrackMovement : MonoBehaviour
         //cart.m_Position = Mathf.SmoothDamp(cart.m_Position, targetPosition, ref velocity, Time.deltaTime * smoothSpeed);
 
 
-        float dirf = (cameraTF.position - playerTransform.position).x;
+        float dirf = (cameraTF.position - playerTransform.position).z;
 
         if (dirf > 0.1f)
-            lerpMovement.MoveTo(new Vector3(playerTransform.position.x, 0f, 0f), Mathf.Abs(dirf));
+            lerpMovement.MoveTo(new Vector3(0f, 0f, playerTransform.position.z), Mathf.Abs(dirf));
         else if (dirf < -0.1f)
-            lerpMovement.MoveTo(new Vector3(playerTransform.position.x, 0f, 0f), Mathf.Abs(dirf));
+            lerpMovement.MoveTo(new Vector3(0f, 0f, playerTransform.position.z), Mathf.Abs(dirf));
      
 
         //float clampValue = Mathf.Clamp(playerAgent.destination.x - playerTransform.position.x, minClamp, maxClamp);
