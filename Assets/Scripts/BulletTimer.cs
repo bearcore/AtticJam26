@@ -24,7 +24,7 @@ public class BulletTimer : MonoBehaviour
 
     void OnEnable()
     {
-        _curDelay = Random.Range(0f, Delay);
+        _curDelay = Random.Range(0f, 0.1f);
     }
 
     // Update is called once per frame

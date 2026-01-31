@@ -397,6 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletTrigger
   ActivateOnEnter: {fileID: 4869619260446090015}
+  EnsureOffOnStart: {fileID: 4291382034778525483}
 --- !u!1001 &3985515145902862970
 PrefabInstance:
   m_ObjectHideFlags: 0
