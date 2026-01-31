@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour
         game = GameManager.Instance;
         game.IsGameOver = false;
 
-        if (game.WaitingForStartClick == true)
+        if (GameManager.WaitingForStartClick == true)
         {
             game.WakeUpPlay.stopped += game.OnWakeUpPlayStopped;
 

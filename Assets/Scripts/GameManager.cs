@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour
     public CinemachineVirtualCamera VcamWakeUp;
     public CinemachineVirtualCamera VcamGameplay1;
 
-    [HideInInspector] public bool WaitingForStartClick = true;
-    [HideInInspector] public bool WaitingForRestartClick;
+    [HideInInspector] public static bool WaitingForStartClick = true;
+    [HideInInspector] public bool WaitingForRestartClick = false;
     [HideInInspector] public bool IsGameOver = false;
     public bool IsPlayerInvulnerable = true;
     public float InitialInvunerabilityTimer = 2f;
@@ -32,14 +32,11 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(Instance.gameObject);
-            return;
-        }
-
         Instance = this;
-        DontDestroyOnLoad(Instance.gameObject);
+        if(!WaitingForStartClick)
+        {
+            StartUI.SetActive(false);
+        }
     }
 
     public void OnWakeUpPlayStopped(PlayableDirector director)
@@ -67,10 +64,9 @@ public class GameManager : MonoBehaviour
 
         if(WaitingForRestartClick && Mouse.current.leftButton.wasPressedThisFrame)
         {
+            WaitingForRestartClick = false;
             SceneManager.LoadScene(0);
         }
-
-       
     }
 
     public static void ReportPlayerHit()
@@ -90,9 +86,8 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator WaitBeforeClickAfterLoseScreen()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.5f);
         WaitingForRestartClick = true;
-        StartUI.SetActive(true);
     }
 
     public void PromoteCamera(CinemachineVirtualCamera vcam)
