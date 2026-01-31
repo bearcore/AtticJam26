@@ -407,10 +407,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d0b3983b28bb541a7154d080eaad6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DollyTrackMovement
-  vcam: {fileID: 0}
+  lerpMovement: {fileID: 0}
+  cameraTF: {fileID: 0}
   playerTransform: {fileID: 1510915158}
-  playerAgent: {fileID: 1510915154}
-  smoothSpeed: 50
 --- !u!114 &322456017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,11 +530,11 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0.04149489, y: 0.9494143, z: -0.27683863, w: -0.14230618}
-  m_LocalPosition: {x: 10.000002, y: 11, z: 14.999998}
+  m_LocalPosition: {x: 10, y: 11, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1485749619}
   m_LocalEulerAnglesHint: {x: 45, y: 180, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
@@ -1529,7 +1528,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: cefc522f8b5960149b162bb1970d9460, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: c69b284858497944d9edc8c52ff8f6f3, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &1448290807
 GameObject:
@@ -1643,6 +1642,92 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448290807}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1485749616
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1485749619}
+  - component: {fileID: 1485749617}
+  - component: {fileID: 1485749620}
+  m_Layer: 0
+  m_Name: Physic Movement Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1485749617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485749616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d0b3983b28bb541a7154d080eaad6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DollyTrackMovement
+  lerpMovement: {fileID: 1485749620}
+  cameraTF: {fileID: 1485749619}
+  playerTransform: {fileID: 1510915158}
+--- !u!4 &1485749619
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485749616}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 330585546}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1485749620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485749616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a113730edfe1dff42b8fcc220e6d349b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LerpMovement
+  AnimTime: 1
+  AnimCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1495652091
 GameObject:
   m_ObjectHideFlags: 3
@@ -1882,7 +1967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1765336644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2322,7 +2407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2111428783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2373,10 +2458,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d0b3983b28bb541a7154d080eaad6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DollyTrackMovement
-  vcam: {fileID: 1765336644}
+  lerpMovement: {fileID: 0}
+  cameraTF: {fileID: 0}
   playerTransform: {fileID: 1510915158}
-  playerAgent: {fileID: 1510915154}
-  smoothSpeed: 0.001
 --- !u!1 &2117777663
 GameObject:
   m_ObjectHideFlags: 0
@@ -2525,9 +2609,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 410087041}
-  - {fileID: 330585546}
   - {fileID: 832575519}
   - {fileID: 2122338193}
+  - {fileID: 1485749619}
   - {fileID: 1765336645}
   - {fileID: 2111428784}
   - {fileID: 322456018}
