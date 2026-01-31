@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 128165225455629953}
   - component: {fileID: 616637141539531147}
   - component: {fileID: 3140765865329521956}
+  - component: {fileID: -4808276739399739202}
   m_Layer: 0
   m_Name: Tracer
   m_TagString: Untagged
@@ -114,3 +115,16 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &-4808276739399739202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2580783251011601843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21684dd5cee5c48679e4101c12a8351c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveObjectEveryFrame
+  LocalVelocity: {x: 0, y: 1000, z: 0}

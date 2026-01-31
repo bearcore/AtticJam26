@@ -22,6 +22,11 @@ public class BulletTimer : MonoBehaviour
         _camera = Camera.main.transform;
     }
 
+    void OnEnable()
+    {
+        _curDelay = Random.Range(0f, Delay);
+    }
+
     // Update is called once per frame
     void Update()
     {
