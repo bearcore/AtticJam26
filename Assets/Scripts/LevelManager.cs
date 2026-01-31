@@ -43,14 +43,14 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator SetPlayerControl(bool enable)
     {
-        yield return new WaitUntil(() => game.PlayerController.gameObject != null);
+        yield return new WaitUntil(() => game.PlayerController != null);
 
         game.PlayerController.enabled = enable;
     }
 
     private IEnumerator SetPromoteCamera(CinemachineVirtualCamera vcam)
     {
-        yield return new WaitUntil(() => vcam.gameObject != null);
+        yield return new WaitUntil(() => vcam != null);
 
         game.PromoteCamera(vcam);
     }
