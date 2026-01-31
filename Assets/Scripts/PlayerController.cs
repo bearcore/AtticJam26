@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private float lookRotationSpeed = 8f;
     private ParticleSystem currentClickEffect = null;
     private bool isMoving = false;
+    private int _direction = 1;
 
     private void Awake()
     {
@@ -95,16 +96,20 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 moveDirection = (agent.destination - transform.position).normalized;
 
-        if (moveDirection.magnitude < 0.1f)
+        if ((agent.destination - transform.position).magnitude < agent.baseOffset + 0.1f)
         {
             ReachTarget();
             isMoving = false;
-            //Debug.Log("Set IsMoving" + isMoving);
 
             return; // Do not rotate if the agent is close to the destination
         }
 
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0, moveDirection.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, lookRotationSpeed * Time.deltaTime);
+    }
+
+    public void SwitchDirection()
+    {
+        _direction = -1;
     }
 }
