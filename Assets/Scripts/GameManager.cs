@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool WaitingForStartClick = true;
     [HideInInspector] public bool WaitingForRestartClick;
     [HideInInspector] public bool IsGameOver = false;
+    public bool IsPlayerInvulnerable = true;
+    public float InitialInvunerabilityTimer = 2f;
 
     private int maximalPriority = 999999999;
     private CinemachineVirtualCamera prevCam;
@@ -50,6 +52,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        InitialInvunerabilityTimer -= Time.deltaTime;
+        if(InitialInvunerabilityTimer <= 0f){
+            IsPlayerInvulnerable = false;
+        }
+        
         if (WaitingForStartClick && Mouse.current.leftButton.wasPressedThisFrame)
         {
             SleepingScene.SetActive(false);
