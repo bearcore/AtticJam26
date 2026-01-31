@@ -1,17 +1,23 @@
 using Cinemachine;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 public class DollyTrackMovement : MonoBehaviour
 {
     //[SerializeField] private CinemachineSmoothPath path;
     //[SerializeField] private CinemachineDollyCart cart;
 
-    [SerializeField] CinemachineVirtualCamera vcam;
+    public LerpMovement lerpMovement;
+
+    //[SerializeField] CinemachineVirtualCamera vcam;
+    //public Rigidbody cameraRB;
+    public Transform cameraTF;
 
     [SerializeField] private Transform playerTransform;
-    [SerializeField] private NavMeshAgent playerAgent;
-    [SerializeField] private float smoothSpeed;
+    //[SerializeField] private NavMeshAgent playerAgent;
+    //[SerializeField] private float smoothSpeed;
 
     private float velocity = 0.0f;
 
@@ -22,7 +28,7 @@ public class DollyTrackMovement : MonoBehaviour
 
     private void Start()
     {
-        dolly = vcam.GetCinemachineComponent<CinemachineTrackedDolly>();
+        //dolly = vcam.GetCinemachineComponent<CinemachineTrackedDolly>();
     }
 
     private void Update()
@@ -31,15 +37,23 @@ public class DollyTrackMovement : MonoBehaviour
         //cart.m_Position = Mathf.SmoothDamp(cart.m_Position, targetPosition, ref velocity, Time.deltaTime * smoothSpeed);
 
 
-        float clampValue = Mathf.Clamp(playerAgent.destination.x - playerTransform.position.x, minClamp, maxClamp);
+        float dirf = (cameraTF.position - playerTransform.position).x;
 
-        float newPosition = Mathf.SmoothDamp(playerTransform.position.x, playerTransform.position.x + clampValue, ref velocity, smoothSpeed * Time.deltaTime);
+        if (dirf > 0.1f)
+            lerpMovement.MoveTo(new Vector3(playerTransform.position.x, 0f, 0f), Mathf.Abs(dirf));
+        else if (dirf < -0.1f)
+            lerpMovement.MoveTo(new Vector3(playerTransform.position.x, 0f, 0f), Mathf.Abs(dirf));
+     
+
+        //float clampValue = Mathf.Clamp(playerAgent.destination.x - playerTransform.position.x, minClamp, maxClamp);
+
+        //float newPosition = Mathf.SmoothDamp(playerTransform.position.x, playerTransform.position.x + playerAgent.velocity.x, ref velocity, smoothSpeed * Time.deltaTime);
 
         //float newPosition = Mathf.SmoothDamp(dolly.m_PathPosition, 200f, ref velocity, smoothSpeed * Time.deltaTime);
 
 
-        dolly.m_PathPosition = newPosition;
+        //dolly.m_PathPosition = newPosition;
 
-        Debug.Log("New Position: " + newPosition);
+        //Debug.Log("New Position: " + newPosition);
     }
 }
