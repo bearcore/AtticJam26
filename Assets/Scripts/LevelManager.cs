@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator InitGame()
     {
-        yield return new WaitUntil(() => GameManager.Instance.gameObject != null);
+        yield return new WaitUntil(() => GameManager.Instance != null);
 
         game = GameManager.Instance;
         game.IsGameOver = false;
